@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Finance</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div id="google_translate_element"></div>
+
+<div class="container">
+
+<h2>Financial Details</h2>
+
+<label>Income</label>
+<button onclick="speak('Income')">🔊</button>
+<input type="number" id="income">
+
+<label>Expenses</label>
+<button onclick="speak('Expenses')">🔊</button>
+<input type="number" id="expenses">
+
+<label>Savings</label>
+<button onclick="speak('Savings')">🔊</button>
+<input type="number" id="savings">
+
+<hr>
+
+<h3>Documents</h3>
+
+<div id="docContainer"></div>
+
+<button onclick="addDocument()">Add Document</button>
+
+<hr>
+
+<!-- BUSINESS INPUTS -->
+<div id="businessSection" style="display:none">
+
+<h3>Business Inputs</h3>
+
+<input placeholder="SHG Loan Details">
+<input placeholder="Manufacturing Cost">
+<input placeholder="Sales Invoice">
+
+</div>
+
+<!-- INDIVIDUAL INPUTS -->
+<div id="individualSection" style="display:none">
+
+<h3>Individual Inputs</h3>
+
+<input placeholder="Salary Slips">
+<input placeholder="Employer Certificate">
+
+</div>
+
+<button onclick="goNext('collateral.html')">Next</button>
+
+</div>
+
+<script src="js/navigation.js"></script>
+<script src="js/voice.js"></script>
+<script src="js/documents.js"></script>
+
+<script>
+let type = localStorage.getItem("userType");
+
+if(type === "business"){
+document.getElementById("businessSection").style.display="block";
+}
+else{
+document.getElementById("individualSection").style.display="block";
+}
+</script>
+
+<script>
+function googleTranslateElementInit() {
+new google.translate.TranslateElement(
+{pageLanguage:'en',includedLanguages:'en,hi,mr'},
+'google_translate_element');
+}
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
