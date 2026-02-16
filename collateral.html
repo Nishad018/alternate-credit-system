@@ -13,16 +13,66 @@
 
 <h2>Collateral Details</h2>
 
-<div id="docContainer"></div>
+<div id="collateralContainer"></div>
 
-<button onclick="addDocument()">Add Collateral Document</button>
+<button onclick="addCollateral()">Add Collateral</button>
+
+<br><br>
 
 <button onclick="goNext('social.html')">Next</button>
 
 </div>
 
 <script src="js/navigation.js"></script>
-<script src="js/documents.js"></script>
+
+<script>
+function addCollateral(){
+
+let container = document.getElementById("collateralContainer");
+
+let div = document.createElement("div");
+
+div.style.border = "1px solid #ccc";
+div.style.padding = "15px";
+div.style.marginBottom = "15px";
+div.style.borderRadius = "10px";
+
+div.innerHTML = `
+
+<label>Collateral Type</label>
+<select>
+<option>Land Papers</option>
+<option>House Property Papers</option>
+<option>Farm Land Records</option>
+<option>Machinery Ownership Proof</option>
+<option>Agricultural Equipment</option>
+<option>Cattle Ownership Proof</option>
+<option>Tractor / Vehicle Ownership</option>
+<option>Job / Employment Proof</option>
+<option>Gold / Jewellery Proof</option>
+<option>Village Panchayat Certificate</option>
+<option>Self Help Group Proof</option>
+<option>Other</option>
+</select>
+
+<br><br>
+
+<label>Upload Ownership Proof</label>
+<input type="file">
+
+<br><br>
+
+<label>Estimated Value (₹)</label>
+<input type="number" placeholder="Enter collateral value">
+
+<br><br>
+
+`;
+
+container.appendChild(div);
+
+}
+</script>
 
 <script>
 function googleTranslateElementInit() {
@@ -32,7 +82,7 @@ new google.translate.TranslateElement(
 }
 </script>
 
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
