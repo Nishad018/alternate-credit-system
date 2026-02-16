@@ -13,22 +13,86 @@
 
 <h2>Social Details</h2>
 
+<!-- SHG MEMBERSHIP -->
 <label>SHG Membership</label>
-<input placeholder="Enter SHG Name or Details">
-<input type="file">
+<input placeholder="Enter SHG Membership Details">
+<input type="file" accept=".pdf,.jpg,.png,.doc,.docx">
 
 <br><br>
 
+<!-- PANCHAYAT RECOMMENDATION -->
 <label>Panchayat Recommendation</label>
-<input placeholder="Enter Recommendation Details">
-<input type="file">
+<input placeholder="Enter Panchayat Recommendation Details">
+<input type="file" accept=".pdf,.jpg,.png,.doc,.docx">
 
 <br><br>
 
+<!-- DEPENDENTS -->
 <label>Dependents</label>
-<input type="number" placeholder="Number of Dependents">
+<input type="number" placeholder="Number of dependents">
 
-<button onclick="goNext('summary.html')">Next</button>
+<hr>
+
+<h3>Community & Living Details</h3>
+
+<!-- YEARS IN VILLAGE -->
+<label>Years Living in Village</label>
+<input type="number" placeholder="Enter number of years">
+
+<!-- OCCUPATION -->
+<label>Occupation</label>
+<select>
+<option>Farmer</option>
+<option>Daily Wage Worker</option>
+<option>Shop Owner</option>
+<option>Self Employed</option>
+<option>Government Employee</option>
+<option>Other</option>
+</select>
+
+<!-- HOUSE STATUS -->
+<label>Housing Status</label>
+<select>
+<option>Own House</option>
+<option>Rented House</option>
+<option>Living with Family</option>
+</select>
+
+<hr>
+
+<h3>Livelihood Details</h3>
+
+<!-- LIVESTOCK -->
+<label>Livestock Owned</label>
+<input placeholder="Cattle / Goats / Poultry etc">
+
+<hr>
+
+<h3>Community Reference</h3>
+
+<label>Reference Person Name</label>
+<input placeholder="Enter reference name">
+
+<label>Reference Phone Number</label>
+<input placeholder="Enter phone number">
+
+<hr>
+
+<h3>Loan History</h3>
+
+<label>Do you have any past or current loans?</label>
+<select id="loanStatus" onchange="toggleLoanSection()">
+<option value="no">No Previous Loans</option>
+<option value="yes">Yes</option>
+</select>
+
+<br><br>
+
+<div id="loanSection" style="display:none">
+
+<div id="loanContainer"></div>
+
+<button type="button" onclick="addLoan()">Add Loan Details</button>
 
 </div>
 
@@ -42,7 +106,67 @@ new google.translate.TranslateElement(
 }
 </script>
 
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script>
+
+function toggleLoanSection(){
+let status=document.getElementById("loanStatus").value;
+let section=document.getElementById("loanSection");
+
+if(status==="yes"){
+section.style.display="block";
+}
+else{
+section.style.display="none";
+}
+}
+
+function addLoan(){
+
+let container=document.getElementById("loanContainer");
+
+let div=document.createElement("div");
+
+div.style.border="1px solid #ccc";
+div.style.padding="15px";
+div.style.marginBottom="15px";
+div.style.borderRadius="8px";
+
+div.innerHTML=`
+
+<label>Loan Type</label>
+<select>
+<option>Bank Loan</option>
+<option>Microfinance Loan</option>
+<option>SHG Loan</option>
+<option>Private Money Lender</option>
+<option>Government Scheme Loan</option>
+<option>Other</option>
+</select>
+
+<label>Loan Amount</label>
+<input type="number" placeholder="Enter loan amount">
+
+<label>Loan Status</label>
+<select>
+<option>Fully Repaid</option>
+<option>Currently Paying</option>
+<option>Defaulted</option>
+</select>
+
+<label>Loan Description</label>
+<textarea placeholder="Tell us about this loan (purpose, repayment experience, etc.)"></textarea>
+
+<label>Upload Loan Document (Optional)</label>
+<input type="file" accept=".pdf,.jpg,.png,.doc,.docx">
+
+`;
+
+container.appendChild(div);
+
+}
+
+</script>
 
 </body>
 </html>
