@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Verification</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div id="google_translate_element"></div>
+
+<div class="container">
+
+<h2>Identity Verification</h2>
+<p>You may upload Aadhaar or PAN card. This step is optional.</p>
+
+<label>Select Document Type</label>
+<button onclick="speak('Select Document Type')">🔊</button>
+
+<select id="docType">
+<option value="">Select Document</option>
+<option>Aadhaar Card</option>
+<option>PAN Card</option>
+</select>
+
+<label>Upload Document</label>
+<button onclick="speak('Upload Document')">🔊</button>
+<input type="file" accept=".pdf,.jpg,.png">
+
+<br><br>
+
+<button onclick="goNext('userType.html')">Continue →</button>
+
+</div>
+
+<script src="js/navigation.js"></script>
+<script src="js/voice.js"></script>
+
+<script>
+function googleTranslateElementInit() {
+new google.translate.TranslateElement(
+{pageLanguage:'en',includedLanguages:'en,hi,mr'},
+'google_translate_element');
+}
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

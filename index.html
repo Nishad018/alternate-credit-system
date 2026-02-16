@@ -7,19 +7,45 @@
 
 <body>
 
+<!-- TRANSLATE DROPDOWN -->
+<div id="google_translate_element"></div>
+
 <div class="container">
 <h2>Login / Signup</h2>
 
+<label>Email</label>
+<button onclick="speak('Enter Email')">🔊</button>
 <input placeholder="Email">
+
+<label>Phone</label>
+<button onclick="speak('Enter Phone Number')">🔊</button>
 <input placeholder="Phone">
+
+<label>Aadhaar</label>
+<button onclick="speak('Enter Aadhaar Number')">🔊</button>
 <input placeholder="Aadhaar">
+
+<label>Password</label>
+<button onclick="speak('Enter Password')">🔊</button>
 <input type="password" placeholder="Password">
 
-<button onclick="goNext('userType.html')">Continue</button>
+<button onclick="goNext('verification.html')">Continue</button>
 
 </div>
 
 <script src="js/navigation.js"></script>
+<script src="js/voice.js"></script>
+
+<!-- GOOGLE TRANSLATE -->
+<script>
+function googleTranslateElementInit() {
+new google.translate.TranslateElement(
+{pageLanguage:'en',includedLanguages:'en,hi,mr'},
+'google_translate_element');
+}
+</script>
+
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
