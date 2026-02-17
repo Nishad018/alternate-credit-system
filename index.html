@@ -10,6 +10,12 @@
 <!-- TRANSLATE DROPDOWN -->
 <div id="google_translate_element"></div>
 
+<!-- Progress Bar -->
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+
 <div class="container">
 <h2>Login / Signup</h2>
 
@@ -102,6 +108,9 @@ new google.translate.TranslateElement(
 </script>
 
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script>
+updateProgress('index.html');
+</script>
 
 </body>
 </html>

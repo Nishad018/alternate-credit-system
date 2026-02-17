@@ -144,3 +144,20 @@ padding:18px;
 }
 
 }
+.progress-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 20px;
+  margin: 20px 0;
+  height: 15px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #7d3cff, #c56fff);
+  border-radius: 20px;
+  transition: width 0.5s ease;
+}
+
