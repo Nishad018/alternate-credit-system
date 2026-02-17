@@ -144,10 +144,10 @@ padding:18px;
 }
 
 }
-/* ===== Progress Bar ===== */
+/* ===== Progress Bar - Soft Pink & Glassy ===== */
 .progress-container {
   width: 100%;
-  background-color: #f0e5ff;
+  background-color: rgba(255, 182, 193, 0.3); /* light pink transparent */
   border-radius: 25px;
   margin: 20px 0;
   height: 20px;
@@ -158,11 +158,11 @@ padding:18px;
 .progress-bar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(135deg, #7d3cff, #c56fff);
+  background: linear-gradient(135deg, #ff9ebc, #ff6f91); /* soft pink gradient */
   border-radius: 25px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 8px rgba(125, 60, 255, 0.6);
+  box-shadow: 0 0 8px rgba(255,111,145,0.5);
   transition: width 0.6s ease;
 }
 
@@ -187,4 +187,38 @@ padding:18px;
 @keyframes moveStripes {
   from { background-position: 0 0; }
   to { background-position: 40px 0; }
+}
+
+/* ===== Google Translate Button - Soft & Centered ===== */
+#google_translate_element {
+    text-align: center; /* center container */
+    margin-bottom: 20px;
+}
+
+#google_translate_element select {
+    padding: 8px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,111,145,0.5);
+    background: linear-gradient(135deg, rgba(255,182,193,0.7), rgba(255,111,145,0.7));
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+#google_translate_element select:hover {
+    background: linear-gradient(135deg, rgba(255,111,145,0.8), rgba(255,182,193,0.8));
+    box-shadow: 0 4px 12px rgba(255,111,145,0.4);
+}
+
+/* Optional custom arrow */
+#google_translate_element select::after {
+    content: "▼";
+    position: absolute;
+    right: 12px;
+    pointer-events: none;
+    color: #fff;
 }
