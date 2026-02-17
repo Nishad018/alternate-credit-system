@@ -15,26 +15,82 @@
 
 <label>Email</label>
 <button onclick="speak('Enter Email')">🔊</button>
-<input placeholder="Email">
+<input id="email" placeholder="Email">
 
 <label>Phone</label>
 <button onclick="speak('Enter Phone Number')">🔊</button>
-<input placeholder="Phone">
+<input id="phone" placeholder="Phone" inputmode="numeric" maxlength="10">
 
 <label>Aadhaar</label>
 <button onclick="speak('Enter Aadhaar Number')">🔊</button>
-<input placeholder="Aadhaar">
+<input id="aadhaar" placeholder="Aadhaar" inputmode="numeric" maxlength="12">
 
 <label>Password</label>
 <button onclick="speak('Enter Password')">🔊</button>
-<input type="password" placeholder="Password">
+<input type="password" id="password" placeholder="Password">
 
-<button onclick="goNext('verification.html')">Continue</button>
+<button onclick="validateAndNext()">Continue</button>
+
+<p id="errorMsg" style="color:red;font-weight:bold;"></p>
 
 </div>
 
 <script src="js/navigation.js"></script>
 <script src="js/voice.js"></script>
+
+<!-- VALIDATION SCRIPT -->
+<script>
+
+// Restrict phone + Aadhaar to numbers only
+document.getElementById("phone").addEventListener("input", function(){
+this.value = this.value.replace(/[^0-9]/g,'');
+});
+
+document.getElementById("aadhaar").addEventListener("input", function(){
+this.value = this.value.replace(/[^0-9]/g,'');
+});
+
+// Email + Full validation before moving forward
+function validateAndNext(){
+
+let email = document.getElementById("email").value.trim();
+let phone = document.getElementById("phone").value.trim();
+let aadhaar = document.getElementById("aadhaar").value.trim();
+let password = document.getElementById("password").value.trim();
+
+let error = document.getElementById("errorMsg");
+
+// Email validation
+if(!email.includes("@")){
+error.innerHTML = "Enter valid email with @";
+return;
+}
+
+// Phone validation
+if(phone.length !== 10){
+error.innerHTML = "Phone number must be 10 digits";
+return;
+}
+
+// Aadhaar validation
+if(aadhaar.length !== 12){
+error.innerHTML = "Aadhaar must be 12 digits";
+return;
+}
+
+// Password validation
+if(password.length < 4){
+error.innerHTML = "Password must be at least 4 characters";
+return;
+}
+
+// Clear error and move forward
+error.innerHTML = "";
+goNext('verification.html');
+
+}
+
+</script>
 
 <!-- GOOGLE TRANSLATE -->
 <script>

@@ -26,6 +26,7 @@
 <script src="js/navigation.js"></script>
 
 <script>
+
 function addCollateral(){
 
 let container = document.getElementById("collateralContainer");
@@ -63,7 +64,7 @@ div.innerHTML = `
 <br><br>
 
 <label>Estimated Value (₹)</label>
-<input type="number" placeholder="Enter collateral value">
+<input type="number" class="numberOnly" placeholder="Enter collateral value" min="0" inputmode="numeric">
 
 <br><br>
 
@@ -71,9 +72,28 @@ div.innerHTML = `
 
 container.appendChild(div);
 
+// Apply number restriction to newly added inputs
+applyNumberRestriction();
+
 }
+
+
+// Function to restrict only numbers
+function applyNumberRestriction(){
+
+document.querySelectorAll(".numberOnly").forEach(input=>{
+
+input.addEventListener("input",()=>{
+input.value = input.value.replace(/[^0-9]/g,'');
+});
+
+});
+
+}
+
 </script>
 
+<!-- GOOGLE TRANSLATE -->
 <script>
 function googleTranslateElementInit() {
 new google.translate.TranslateElement(

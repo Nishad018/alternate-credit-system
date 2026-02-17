@@ -15,15 +15,18 @@
 
 <label>Income</label>
 <button onclick="speak('Income')">🔊</button>
-<input type="number" id="income">
+<input type="number" class="numberOnly" id="income" min="0" inputmode="numeric">
 
 <label>Expenses</label>
 <button onclick="speak('Expenses')">🔊</button>
-<input type="number" id="expenses">
+<input type="number" class="numberOnly" id="expenses" min="0" inputmode="numeric">
 
 <label>Savings</label>
 <button onclick="speak('Savings')">🔊</button>
-<input type="number" id="savings">
+<input type="number" class="numberOnly" id="savings" min="0" inputmode="numeric">
+
+<!-- AUTO BALANCE DISPLAY -->
+<p id="balanceDisplay" style="font-weight:bold;margin-top:10px;"></p>
 
 <hr>
 
@@ -87,7 +90,6 @@
 
 <br><br>
 
-<!-- NEXT BUTTON -->
 <button onclick="goNext('collateral.html')">Next</button>
 
 </div>
@@ -96,6 +98,7 @@
 <script src="js/voice.js"></script>
 <script src="js/documents.js"></script>
 
+<!-- USER TYPE DISPLAY -->
 <script>
 let type = localStorage.getItem("userType");
 
@@ -107,6 +110,46 @@ document.getElementById("individualSection").style.display="block";
 }
 </script>
 
+<!-- NUMBER VALIDATION + AUTO CALCULATION -->
+<script>
+
+// Restrict only numbers
+document.querySelectorAll(".numberOnly").forEach(input=>{
+input.addEventListener("input",()=>{
+input.value = input.value.replace(/[^0-9]/g,'');
+calculateBalance();
+});
+});
+
+// Auto balance calculation
+function calculateBalance(){
+
+let income = parseInt(document.getElementById("income").value) || 0;
+let expenses = parseInt(document.getElementById("expenses").value) || 0;
+
+let balance = income - expenses;
+
+let display = document.getElementById("balanceDisplay");
+
+if(income === 0 && expenses === 0){
+display.innerHTML = "";
+return;
+}
+
+if(balance < 0){
+display.style.color = "red";
+display.innerHTML = "⚠ Expenses exceed income by ₹" + Math.abs(balance);
+}
+else{
+display.style.color = "green";
+display.innerHTML = "✔ Net Balance: ₹" + balance;
+}
+
+}
+
+</script>
+
+<!-- GOOGLE TRANSLATE -->
 <script>
 function googleTranslateElementInit() {
 new google.translate.TranslateElement(
